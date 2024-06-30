@@ -5,7 +5,7 @@ const path = require('path');
 
 const generateRandomData = () => {
   const timestamp = new Date().toISOString();
-  const temperature = (Math.random() * 100).toFixed(2); // Random temperature between 0 and 100
+  const temperature = (Math.random() * 80).toFixed(2); // Random temperature between 0 and 100
   const pressure = (Math.random() * 10).toFixed(2); // Random pressure between 0 and 10
 
   return {

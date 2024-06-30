@@ -3,11 +3,15 @@
       <AppNavbar />
 
     <div class="dock">
-      <h1>Real-Time Dashboard</h1>
-      <h3>-------------------------------------------------</h3>
-      <h3>Timestamp: {{ data.timestamp }}</h3>
-      <h3>Temperature: {{ data.temperature }} °C</h3>
-      <h3>Pressure: {{ data.pressure }} kPa</h3>
+            <p>Time</p>
+
+      <h2>{{ data.timestamp }}</h2>
+            <p>Temperature</p>
+
+      <h2>{{ data.temperature }} °C</h2>
+                  <p>Pressure</p>
+
+      <h2>{{ data.pressure }} kPa</h2>
     </div>
 
     <div class="dock1" v-if="data.temperature !== ''">
@@ -108,7 +112,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 .dock {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(173, 216, 230, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -117,50 +121,51 @@ body {
   font-family:'Montserrat', sans-serif;
   font-weight: 100;
   height: 300px;
-  width: 520px;
+  width: 500px;
   z-index: 2;
   position: absolute;
-  top: 150px;
+  top: 100px;
   left: 50px;
   color: #ffffff;
+  padding:20px;
 }
 
 .dock1 {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(173, 216, 230, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 330px;
+  height: 350px;
   width: 500px;
   z-index: 2;
    font-family:'Montserrat', sans-serif;
   font-weight: 100;
   position: absolute;
-  top: 550px;
+  top: 500px;
   left: 50px;
   color: #ffffff;
-  padding: 10px;
+  padding:20px;
 }
 
 .dock2 {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(173, 216, 230, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 330px;
+  height: 350px;
   width: 500px;
   z-index: 2;
   position: absolute;
    font-family:'Montserrat', sans-serif;
   font-weight: 100;
-  top: 550px;
+  top: 500px;
   right: 50px;
   color: #ffffff;
-  padding: 10px;
+  padding:20px;
 }
 
 .dock3 {
@@ -176,8 +181,10 @@ body {
   position: absolute;
    font-family:'Montserrat', sans-serif;
   font-weight: 100;
-  top: 150px;
+  top: 100px;
   right: 50px;
   color: #ffffff;
+    padding: 10px;
+
 }
 </style>

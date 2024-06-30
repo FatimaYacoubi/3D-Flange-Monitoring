@@ -2,8 +2,8 @@
   <div class="line-chart">
     <svg class="chart-svg">
       <!-- X and Y axis lines -->
-      <line x1="40" y1="20" x2="40" y2="280" stroke="purple" />
-      <line x1="40" y1="280" x2="480" y2="280" stroke="purple" />
+      <line x1="40" y1="20" x2="40" y2="280" stroke="#D8BFD8" />
+      <line x1="40" y1="280" x2="480" y2="280" stroke="#D8BFD8" />
 
       <!-- Y axis labels -->
       <text x="10" y="280" class="label">0 kPa</text>
@@ -22,7 +22,7 @@
             class="label">{{ time }}</text>
 
       <!-- Line path -->
-      <path :d="linePath" fill="none" stroke="purple" stroke-width="2" />
+      <path :d="linePath" fill="none" stroke="#D8BFD8" stroke-width="2" />
 
       <!-- Data points -->
       <g class="data-points">
@@ -31,7 +31,7 @@
                 :cx="40 + index * 100"
                 :cy="280 - point.pressure * 25"
                 r="4"
-                fill="purple"
+                fill="#D8BFD8"
                 stroke="white"
                 stroke-width="2" />
       </g>
@@ -78,7 +78,7 @@ export default {
 
 .label {
   font-size: 12px;
-  fill: purple;
+  fill: #D8BFD8;
 }
 
 .data-points circle {

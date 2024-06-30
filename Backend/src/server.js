@@ -19,8 +19,10 @@ const io = require('socket.io')(server, {
   cors: {
     origin: '*'
   }
-}); 
-
+});
+ app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
 io.on('connection', (socket) => {
   console.log('Client connected');
 
