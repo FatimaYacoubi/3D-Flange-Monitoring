@@ -1,11 +1,11 @@
 <template>
   <div>
       <AppNavbar />
-
+<div class="container">
     <div class="dock">
             <p>Time</p>
 
-      <h2>{{ data.timestamp }}</h2>
+        <h2>{{ formatTimestamp(data.timestamp) }}</h2>
             <p>Temperature</p>
 
       <h2>{{ data.temperature }} °C</h2>
@@ -13,7 +13,7 @@
 
       <h2>{{ data.pressure }} kPa</h2>
     </div>
-
+  <div class="flexresponsive">
     <div class="dock1" v-if="data.temperature !== ''">
       <h3>Temperature</h3>
       <LineChart :data-points="temperatureData" />
@@ -23,16 +23,21 @@
       <h3>Pressure</h3>
       <LineChart2 :data-points="pressureData" />
     </div>
+      </div>
+
 
     <div class="dock3">
       <iframe
-        width="500"
-        height="300"
+        width="100%"
+        height="100%"
         src="https://www.youtube.com/embed/r0A16XtTeFQ?playlist=r0A16XtTeFQ&autoplay=1&loop=1&mute=1&controls=0&title=0"
         frameborder="0"
         allowfullscreen
-      ></iframe>
+      ></iframe>     
+
     </div>
+        </div>
+
   </div>
 </template>
 
@@ -40,8 +45,7 @@
 import { io } from 'socket.io-client';
 import LineChart from './LineChart';
 import LineChart2 from './LineChart2';
-import AppNavbar from '@/components/navbar/AppNavbar.vue';  // Adjust @ to the correct alias if applicable
-
+import AppNavbar from '@/components/navbar/AppNavbar.vue';  
 
 export default {
   components: {
@@ -61,8 +65,12 @@ export default {
     };
   },
   methods: {
+    formatTimestamp(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleString();
+    },
     connectSocket() {
-      this.socket = io('http://localhost:3000');
+      this.socket = io('https://flangebackendd.onrender.com/');
 
       this.socket.on('connect', () => {
         console.log('Socket connected');
@@ -92,8 +100,10 @@ export default {
       this.socket.on('disconnect', () => {
         console.log('Socket disconnected');
       });
+      
     },
   },
+  
   mounted() {
     this.connectSocket();
   },
@@ -120,8 +130,10 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2);
   font-family:'Montserrat', sans-serif;
   font-weight: 100;
-  height: 300px;
-  width: 500px;
+ height: auto; 
+  margin-bottom: 20px; 
+  width: 25%;
+  align-content: center;
   z-index: 2;
   position: absolute;
   top: 100px;
@@ -137,8 +149,9 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 350px;
-  width: 500px;
+ height: auto; 
+  margin-bottom: 20px; 
+    width: 25%;
   z-index: 2;
    font-family:'Montserrat', sans-serif;
   font-weight: 100;
@@ -156,8 +169,9 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 350px;
-  width: 500px;
+ height: auto; /* Auto height to prevent overflow */
+  margin-bottom: 20px; 
+    width: 25%;
   z-index: 2;
   position: absolute;
    font-family:'Montserrat', sans-serif;
@@ -175,8 +189,8 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  height: 300px;
-  width: 520px;
+ height: 37%;
+  width: 25%;
   z-index: 2;
   position: absolute;
    font-family:'Montserrat', sans-serif;
@@ -185,6 +199,66 @@ body {
   right: 50px;
   color: #ffffff;
     padding: 10px;
+
+}
+.iframe-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.dock iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1200px) {
+  .dock, .dock1, .dock2, .dock3 {
+    margin: 10px 0; 
+  }
+  .flexresponsive{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;  }  
+ 
+}
+
+@media (max-width: 768px) {
+
+    .flexresponsive{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;  } 
+ 
+}
+
+
+@media (max-width: 480px) {
+
+ .dock2{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;  } 
 
 }
 </style>

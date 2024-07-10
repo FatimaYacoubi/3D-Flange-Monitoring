@@ -20,22 +20,20 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.5);
   color: #ffffff;
   padding: 10px 20px;
   position: fixed;
   width: 100%;
     height: 0px;
    font-family:'Montserrat', sans-serif;
-
   top: 0;
   left: 0;
   z-index: 10;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+ 
 }
 
 .navbar .container {
+
   display: flex;
   justify-content: space-between;
   align-items: center;

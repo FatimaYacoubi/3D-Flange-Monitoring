@@ -1,6 +1,6 @@
 <template>
   <div class="line-chart">
-    <svg class="chart-svg">
+    <svg class="chart-svg" viewBox="0 0 500 300" preserveAspectRatio="none">
       <!-- X and Y axis lines -->
       <line x1="40" y1="20" x2="40" y2="280" stroke="lightblue" />
       <line x1="40" y1="280" x2="480" y2="280" stroke="lightblue" />
@@ -65,8 +65,10 @@ export default {
 
 <style scoped>
 .line-chart {
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 300px;
 }
 
 .chart-svg {

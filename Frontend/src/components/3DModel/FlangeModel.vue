@@ -1,6 +1,5 @@
 <template>
   <div class="flange-model-container">
-    <img src="@/assets/xp.jpg" alt="Background Image" class="background-img">
     <div ref="container"></div>
   </div>
 </template>
@@ -37,12 +36,10 @@ export default {
         console.error('Error loading texture:', error);
       });
 
-      // Flange Geometry and Material
       const flangeGeometry = new THREE.CylinderGeometry(5, 5, 1, 32);
       const flangeMaterial = new THREE.MeshPhongMaterial({ map: texture });
       const flange = new THREE.Mesh(flangeGeometry, flangeMaterial);
 
-      // Create central and side holes
       const centralHoleGeometry = new THREE.CylinderGeometry(2, 2, 1.2, 32);
       centralHoleGeometry.translate(0, 0, 0.1);
       const centralHole = new THREE.Mesh(centralHoleGeometry, flangeMaterial);
@@ -61,7 +58,6 @@ export default {
 
     
 
-      // Perform CSG operations
       let flangeCSG = CSG.fromMesh(flange);
                   flangeCSG = flangeCSG.subtract(CSG.fromMesh(thirdHole));
 
@@ -103,9 +99,10 @@ export default {
 .flange-model-container {
   position: relative;
   width: 100%;
-  height: 101.5vh;
+  height: 100%;
   overflow: hidden;
     z-index: 1;
+
 
 }
 
@@ -115,7 +112,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: repeat;
   z-index: -3;
 }
 

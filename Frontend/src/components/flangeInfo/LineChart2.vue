@@ -1,6 +1,6 @@
 <template>
   <div class="line-chart">
-    <svg class="chart-svg">
+    <svg class="chart-svg" viewBox="0 0 500 300" preserveAspectRatio="none">
       <!-- X and Y axis lines -->
       <line x1="40" y1="20" x2="40" y2="280" stroke="#D8BFD8" />
       <line x1="40" y1="280" x2="480" y2="280" stroke="#D8BFD8" />
@@ -11,8 +11,7 @@
       <text x="10" y="180" class="label">4 kPa</text>
       <text x="10" y="130" class="label">6 kPa</text>
       <text x="10" y="80" class="label">8 kPa</text>
-            <text x="10" y="30" class="label">10 kPa</text>
-
+      <text x="10" y="30" class="label">10 kPa</text>
 
       <!-- X axis labels -->
       <text v-for="(time, index) in trimmedTimes"
@@ -67,8 +66,10 @@ export default {
 
 <style scoped>
 .line-chart {
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 300px;
 }
 
 .chart-svg {
